@@ -2,19 +2,18 @@ const pgp = require("pg-promise");
 require("env2")("./config.env");
 const url = require("url");
 
-if(!process.env.DATABASE_URL){
-    throw new Error("Environment variable DATABASE_URL must be set.")
+if(!process.env.DATABASE_URL_URL){
+    throw new Error("Environment variable DATABASE_URL_URL must be set.")
 }
 
-const params = url.parse(process.env.DATABASE_URL);
+const params = url.parse(process.env.DATABASE_URL_URL);
 console.log("PARAMSSSS: ", params);
-console.log("PARAMSSSS URL SPLIT: ", params.url.split(":"));
 
 const [username, password] = params.url.split(":");
 
 const connection = {
     host: params.hostname,
-    database: params.pathname.split("/"),
+    database: params.pathname.split("/")[1],
     port: params.port,
     max: process.env.DB_MAX_CONNECTIONS || 2
 };
