@@ -1,27 +1,22 @@
 {
-  "name": "chatroom",
-  "version": "1.0.0",
-  "description": "Chat room for groups",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gbaja/ChatRoom.git"
-  },
-  "author": "Fatimat & Tunde",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Gbaja/ChatRoom/issues"
-  },
-  "homepage": "https://github.com/Gbaja/ChatRoom#readme",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "body-parser": "^1.18.3",
-    "env2": "^2.2.0",
+    "env2": "^2.2.2",
     "express": "^4.16.3",
     "path": "^0.12.7",
     "pg": "^7.4.3",
-    "pg-promise": "^8.4.4"
+    "pg-promise": "^8.4.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
