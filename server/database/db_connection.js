@@ -9,7 +9,7 @@ if (!process.env.DATABASE_URL_URL) {
 const params = url.parse(process.env.DATABASE_URL_URL);
 console.log("PARAMSSSS: ", params);
 
-const [username, password] = params.url.split(":");
+const [username, password] = params.auth.split(":");
 
 const connection = {
   host: params.hostname,
