@@ -1,5 +1,5 @@
 const pgp = require("pg-promise");
-require("env2")("./.env");
+require("env2")(".env");
 const url = require("url");
 
 if (!process.env.DATABASE_URL_URL) {
@@ -8,7 +8,6 @@ if (!process.env.DATABASE_URL_URL) {
 
 const params = url.parse(process.env.DATABASE_URL_URL);
 console.log("PARAMSSSS: ", params);
-
 const [username, password] = params.auth.split(":");
 
 const connection = {
@@ -21,7 +20,6 @@ const connection = {
 if (username) {
   connection.user = username;
 }
-
 if (password) {
   connection.password = password;
 }

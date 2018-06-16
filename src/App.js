@@ -1,15 +1,10 @@
-/* eslint-disable  */
-import React, {
-  Component
-} from 'react';
-import './App.css';
+import React, { Component } from "react";
+
+import Home from "./Home/Home";
 
 class App extends Component {
-  // eslint-disable-next-line
-  render() { <
-    div className = "App" >
-      chatterbox <
-      /div>
+  render() {
+    return <Home />;
   }
 }
 
