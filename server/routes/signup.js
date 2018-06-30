@@ -1,36 +1,31 @@
-const { getUser, addUser } = require("../queries/user");
-const { hashPassword } = require("../authentication/bcrypt");
+const oneUser = require("../queries/one_user");
+const addUser = require("../queries/add_user");
+const { hashPassword } = require("../utils/bcrypt");
 
-exports.post = (req, res) =>{
-  console.log("req.body:", req.body)
-   const {
-     name,
-     username,
-     email,
-     password,
-     isExperts
-    } = req.body;
+exports.post = async (req, res) => {
+  console.log("req.body:", req.body);
+  const { name, user_name, email, password, is_experts } = req.body;
 
-    try {
-      const userExists = await getUser(req.body.email);
-      if(!userExists){
-        const hashedPassword = await hashPassword(req.body.password);
-        const userDetails = {
-          name : req.body.name,
-          username : req.body.username,
-          password : hashedPassword,
-          email : req.body.email,
-          isExperts : req.body.isExperts
-        }
-        const newUserData = await addUser(userDetails);
-        res.send(newUserData);
-      } else {
-        res.send("user already exists!")
-      }
+  try {
+    const userExists = await oneUser(req.body.email);
+    if (!userExists) {
+      const hashedPassword = await hashPassword(req.body.password);
+      const userDetails = {
+        name: req.body.name,
+        user_name: req.body.user_name,
+        password: hashedPassword,
+        email: req.body.email,
+        is_experts: req.body.is_experts
+      };
+      const newUserData = await addUser(userDetails);
+      req.session.user_id = newUserData.id;
+      req.session.user_name = newUserData.user_name;
+      res.send(newUserData);
+    } else {
+      res.status(422).send({ type: "error", message: "user already exists!" });
     }
-    catch (err) {
-      res.status(401).send(err);
-      console.log("add new user error:", err)
-
-    }
-}
+  } catch (err) {
+    res.status(401).send(err);
+    console.log("add new user error:", err);
+  }
+};

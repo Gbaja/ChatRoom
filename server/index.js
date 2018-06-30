@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cookieSession = require("cookie-session");
 
 const app = express();
 const routes = require("./routes/index");
@@ -12,6 +13,14 @@ app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: false
+  })
+);
+
+app.use(
+  cookieSession({
+    name: "session",
+    secret: "process.env.SECRET",
+    maxAge: 24 * 60 * 60 * 1000
   })
 );
 

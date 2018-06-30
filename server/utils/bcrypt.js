@@ -11,24 +11,8 @@ const hashPassword = password =>
     });
   });
 
+const isValidPassword = (userPassword, password) => {
+  return bcrypt.compareSync(password, userPassword);
+};
 
-const validate = (password, userData) =>
-  new Promise((resolve, reject) => {
-    if (userData) {
-      bcrypt.compare(password, userData.password, (err, res) => {
-        if (err) {
-          reject(err);
-        } else if (res) {
-          resolve(true);
-        } else {
-          reject("Wrong password!");
-        }
-      });
-    } else {
-      reject(
-        "please create an account"
-      );
-    }
-  });
-
-module.exports = { hashPassword, validate };
+module.exports = { hashPassword, isValidPassword };
