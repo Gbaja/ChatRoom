@@ -1,3 +1,3 @@
-export.post = (req, res) =>{
-    
-}
+exports.post = (req, res) => {
+  console.log("hey");
+};
