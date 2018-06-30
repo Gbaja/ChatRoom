@@ -1,5 +1,6 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
+import LoginRequest from '../request';
 
 import LoginForm from "./LoginForm";
 
@@ -18,6 +19,7 @@ const FormikSignup = withFormik({
   }),
   handleSubmit(values, { props, setStatus }) {
     console.log(values);
+   return LoginRequest(values);
   }
 })(LoginForm);
 
