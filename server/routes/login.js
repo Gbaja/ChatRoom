@@ -8,7 +8,7 @@ exports.post = (req, res) => {
     if (!result) {
       return res.status(422).send({
         type: "error",
-        message: "User already exists, please try loggin in"
+        message: "User does not exists, please try loggin in"
       });
     } else {
       console.log();
