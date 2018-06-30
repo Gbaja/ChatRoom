@@ -6,6 +6,7 @@ const LoginForm = ({ errors, touched, status }) => {
   return (
     <Form>
       <h3>Log in</h3>
+      {status && <p>{status}</p>}
       <label>Email</label>
       {touched.email && email && <p>{email}</p>}
       <Field type="email" name="email" placeholder="email" />

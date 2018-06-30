@@ -19,7 +19,13 @@ const FormikSignup = withFormik({
   }),
   handleSubmit(values, { props, setStatus }) {
     console.log(values);
-   return LoginRequest(values);
+    LoginRequest(values).then(res=>{
+      if(res.status === 422){
+        setStatus(res.data.message)
+        return;
+      }
+      props.history.push('/dashboard/res.id')
+    })
   }
 })(LoginForm);
 
