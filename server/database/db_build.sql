@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users(
     name VARCHAR(50) NOT NULL,
     user_name TEXT UNIQUE NOT NULL,
     email VARCHAR(50),
-    password VARCHAR(50),
+    password VARCHAR(100),
     is_experts BOOLEAN DEFAULT false NOT NULL
 );
 

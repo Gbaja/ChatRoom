@@ -1,9 +1,5 @@
-const bcrypt = require("bcrypt");
+const { isValidPassword } = require("../utils/bcrypt");
 const oneUser = require("../queries/one_user");
-
-const isValidPassword = function(userPassword, password) {
-  return bcrypt.compareSync(password, userPassword);
-};
 
 exports.post = (req, res) => {
   const { email, password } = req.body;
@@ -15,14 +11,17 @@ exports.post = (req, res) => {
         message: "User already exists, please try loggin in"
       });
     } else {
-      if (!isValidPassword(password, password)) {
+      console.log();
+      if (!isValidPassword(result.password, password)) {
         return res.status(422).send({
           type: "error",
           message: "Password incorrect."
         });
       } else {
+        console.log("RESULT: ", result);
         req.session.user_id = result.id;
         req.session.user_name = result.user_name;
+        console.log(req.session);
         return res.send(result);
       }
     }
