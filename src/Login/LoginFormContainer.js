@@ -1,6 +1,6 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import LoginRequest from '../request';
+import LoginRequest from '../Request/login_request';
 
 import LoginForm from "./LoginForm";
 
