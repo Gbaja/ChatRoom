@@ -8,6 +8,8 @@ const Dashboard = props => {
       <Link to={`/add_new_group/${props.match.params.id}`}>
         Create new group
       </Link>
+      <h3>All groups</h3>
+      {/* Get all the groups that are in the database*/}
     </div>
   );
 };
