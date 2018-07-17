@@ -18,7 +18,7 @@ class App extends Component {
           <Route exact path="/dashboard/:id" component={Dashboard} />
           <Route
             exact
-            path="/add_new_group"
+            path="/add_new_group/:user_id"
             component={AddNewGroupFormContainer}
           />
         </Switch>
