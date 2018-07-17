@@ -6,6 +6,7 @@ const SignupForm = ({ errors, touched, status }) => {
   return (
     <Form>
       <h3>Sign up</h3>
+      {status && <p> {status}</p>}
       <label>Name</label>
       {touched.name && name && <p>{name}</p>}
       <Field type="name" name="name" placeholder="name" />
@@ -26,7 +27,6 @@ const SignupForm = ({ errors, touched, status }) => {
         <option value="No">No</option>
       </Field>
       <button>Submit</button>
-      {status && <p> {status}</p>}
     </Form>
   );
 };

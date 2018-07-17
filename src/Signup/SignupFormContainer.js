@@ -1,6 +1,6 @@
 import { withFormik, Formik } from "formik";
 import * as Yup from "yup";
-import SignupRequest from '../Request/signup_request';
+import SignupRequest from "../Request/signup_request";
 import SignupForm from "./SignupForm";
 import { CLIENT_RENEG_WINDOW } from "tls";
 
@@ -25,13 +25,13 @@ const FormikSignup = withFormik({
   }),
   handleSubmit(values, { props, setStatus }) {
     console.log(values);
-    SignupRequest(values).then(res=>{
-      if(res.status === 422){
-        setStatus(res.data.message)
+    SignupRequest(values).then(res => {
+      if (res.status === 422) {
+        setStatus(res.data.message);
         return;
       }
-      props.history.push('/dashboard/res.id')
-    })
+      props.history.push(`/dashboard/${res.id}`);
+    });
   }
 })(SignupForm);
 
