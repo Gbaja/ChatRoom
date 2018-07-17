@@ -14,7 +14,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/loginform" component={LoginFormContainer} />
           <Route exact path="/signupform" component={SignupFormContainer} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard/:id" component={Dashboard} />
         </Switch>
       </BrowserRouter>
     );
