@@ -1,8 +1,8 @@
 import { withFormik, Formik } from "formik";
 import * as Yup from "yup";
-import SignupRequest from "../Request/signup_request";
+
+import SignupRequest from "../../Request/signup_request";
 import SignupForm from "./SignupForm";
-import { CLIENT_RENEG_WINDOW } from "tls";
 
 const FormikSignup = withFormik({
   mapPropsToValues({ name, user_name, email, password, is_experts }) {
