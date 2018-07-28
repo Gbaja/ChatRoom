@@ -1,20 +1,18 @@
 import axios from "axios";
 
-const LoginRequest = data => {
+const NewGroupRequest = data => {
   return axios
-    .post("/api/login", data)
+    .post("/api/new_group", data)
     .then(res => {
-      console.log("LOG IN RES: ", res.data);
-
       return res.data;
     })
     .catch(err => {
       if (err.response.status === 422) {
         return err.response;
       } else {
-        console.log(err);
+        console.log("new group request error : ", err);
       }
     });
 };
 
-export default LoginRequest;
+export default NewGroupRequest;

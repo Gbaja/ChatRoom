@@ -1,6 +1,6 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import LoginRequest from '../Request/login_request';
+import LoginRequest from "../../Request/login_request";
 
 import LoginForm from "./LoginForm";
 
@@ -19,13 +19,14 @@ const FormikSignup = withFormik({
   }),
   handleSubmit(values, { props, setStatus }) {
     console.log(values);
-    LoginRequest(values).then(res=>{
-      if(res.status === 422){
-        setStatus(res.data.message)
+    LoginRequest(values).then(res => {
+      if (res.status === 422) {
+        setStatus(res.data.message);
         return;
       }
-      props.history.push('/dashboard/res.id')
-    })
+      console.log("LOGIN RES IN HANDLE SUBMIT: ", res);
+      props.history.push(`/dashboard/${res.id}`);
+    });
   }
 })(LoginForm);
 
