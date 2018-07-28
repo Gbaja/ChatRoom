@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "./Home/Home";
 import SignupFormContainer from "./Signup/SignupFormContainer";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard_container";
 import LoginFormContainer from "./Login/LoginFormContainer";
 import AddNewGroupFormContainer from "./AddNewGroup/AddNewGroupFormContainer";
 
